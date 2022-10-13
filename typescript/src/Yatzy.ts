@@ -35,6 +35,18 @@ export default class Yatzy {
     return this.sum_of(3);
   }
 
+  fours(): number {
+    return this.sum_of(4);
+  }
+
+  fives(): number {
+    return this.sum_of(5);
+  }
+
+  sixes(): number {
+    return this.sum_of(6);
+  }
+
   static score_pair(d1: number, d2: number, d3: number, d4: number, d5: number): number {
     var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     counts[d1 - 1]++;
@@ -144,27 +156,5 @@ export default class Yatzy {
     else return 0;
   }
 
-  fours(): number {
-    var sum;
-    sum = 0;
-    for (let at = 0; at != 5; at++) {
-      if (this.dices[at] == 4) {
-        sum += 4;
-      }
-    }
-    return sum;
-  }
 
-  fives(): number {
-    let s = 0;
-    var i;
-    for (i = 0; i < this.dices.length; i++) if (this.dices[i] == 5) s = s + 5;
-    return s;
-  }
-
-  sixes(): number {
-    let sum = 0;
-    for (var at = 0; at < this.dices.length; at++) if (this.dices[at] == 6) sum = sum + 6;
-    return sum;
-  }
 }
