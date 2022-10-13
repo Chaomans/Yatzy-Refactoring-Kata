@@ -9,6 +9,7 @@ Only what I thought able to refactor in one hour.
 |     status     | step description                                                                     |
 | :------------: | :----------------------------------------------------------------------------------- |
 | :orange_heart: | Remove args and use `this.dices` instead.                                            |
+| :green_heart:  | Use `reduce()` to simplify `chance()` method                                         |
 | :green_heart:  | Create `sum_of()` method                                                             |
 | :green_heart:  | Use `sum_of()` to simplify `ones()` to `sixes()` methods                             |
 | :green_heart:  | Create `count_is_above()` method                                                     |
