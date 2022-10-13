@@ -66,22 +66,12 @@ export default class Yatzy {
     return Math.max(...above) * 2;
   }
 
-  static two_pair(d1: number, d2: number, d3: number, d4: number, d5: number): number {
-    var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    counts[d1 - 1]++;
-    counts[d2 - 1]++;
-    counts[d3 - 1]++;
-    counts[d4 - 1]++;
-    counts[d5 - 1]++;
-    var n = 0;
-    var score = 0;
-    for (let i = 0; i < 6; i += 1)
-      if (counts[6 - i - 1] >= 2) {
-        n++;
-        score += 6 - i;
-      }
-    if (n == 2) return score * 2;
-    else return 0;
+  two_pair(): number {
+    const above = this.count_is_above(2);
+    if (above.length < 2) {
+      return 0
+    }
+    return above.sort().slice(0, 2).reduce((a, b) => a + b) * 2;
   }
 
   static four_of_a_kind(_1: number, _2: number, d3: number, d4: number, d5: number): number {
