@@ -47,16 +47,23 @@ export default class Yatzy {
     return this.sum_of(6);
   }
 
-  static score_pair(d1: number, d2: number, d3: number, d4: number, d5: number): number {
-    var counts = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    counts[d1 - 1]++;
-    counts[d2 - 1]++;
-    counts[d3 - 1]++;
-    counts[d4 - 1]++;
-    counts[d5 - 1]++;
-    var at;
-    for (at = 0; at != 6; at++) if (counts[6 - at - 1] >= 2) return (6 - at) * 2;
-    return 0;
+  count_is_above(val: number): number[] {
+    const values: Set<number> = new Set(this.dices);
+    const above: number[] = [];
+    values.forEach(value => {
+      if (this.dices.filter(dice => dice === value).length >= val) {
+        above.push(value);
+      }
+    })
+    return above;
+  }
+
+  score_pair(): number {
+    const above = this.count_is_above(2);
+    if (!above) {
+      return 0
+    }
+    return Math.max(...above) * 2;
   }
 
   static two_pair(d1: number, d2: number, d3: number, d4: number, d5: number): number {
