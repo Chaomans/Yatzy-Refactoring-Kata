@@ -9,6 +9,10 @@ export default class Yatzy {
     return this.dices.reduce((a, b) => a + b);
   }
 
+  sum_of(val: number): number {
+    return this.dices.filter((dice) => dice === val).length * val;
+  }
+
   static yatzy(...args: number[]): number {
     var counts = [0, 0, 0, 0, 0, 0, 0, 0];
     for (var i = 0; i != args.length; ++i) {
@@ -19,36 +23,16 @@ export default class Yatzy {
     return 0;
   }
 
-  static ones(d1: number, d2: number, d3: number, d4: number, d5: number): number {
-    var sum = 0;
-    if (d1 == 1) sum++;
-    if (d2 == 1) sum++;
-    if (d3 == 1) sum++;
-    if (d4 == 1) sum++;
-    if (d5 == 1) sum++;
-
-    return sum;
+  ones(): number {
+    return this.sum_of(1);
   }
 
-  static twos(d1: number, d2: number, d3: number, d4: number, d5: number): number {
-    var sum = 0;
-    if (d1 == 2) sum += 2;
-    if (d2 == 2) sum += 2;
-    if (d3 == 2) sum += 2;
-    if (d4 == 2) sum += 2;
-    if (d5 == 2) sum += 2;
-    return sum;
+  twos(): number {
+    return this.sum_of(2);
   }
 
-  static threes(d1: number, d2: number, d3: number, d4: number, d5: number): number {
-    var s;
-    s = 0;
-    if (d1 == 3) s += 3;
-    if (d2 == 3) s += 3;
-    if (d3 == 3) s += 3;
-    if (d4 == 3) s += 3;
-    if (d5 == 3) s += 3;
-    return s;
+  threes(): number {
+    return this.sum_of(3);
   }
 
   static score_pair(d1: number, d2: number, d3: number, d4: number, d5: number): number {
